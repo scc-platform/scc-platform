@@ -1,0 +1,21 @@
+
+{include file="header.htm"}
+
+
+<h2>Prefs</h2>
+
+{if $isActive}
+	Active!
+	<form action="" method="post">
+		<input type="hidden" name="makeInactivate" value="yes">
+		<input type="submit" value="Make Inactive">
+	</form>
+{else}
+	Inactive!
+	<form action="" method="post">
+		<input type="hidden" name="makeActive" value="yes">
+		<input type="submit" value="Make Active">
+	</form>
+{/if}
+
+{include file="footer.htm"}
