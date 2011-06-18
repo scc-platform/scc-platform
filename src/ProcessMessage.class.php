@@ -42,9 +42,29 @@ class ProcessMessage {
 	}
 
 	function sendToUsers() {
+		foreach($this->users as $user) {
+
+
+			$this->email($user);
+
+
+		}
+	}
+
+	private function email($userData) {
+
+		$s = getEmailSmarty();
+		$s->assign('toUser',$userData);
+		$s->assign('message',$this->messsageData);
+		$body = $s->fetch('sendMessageByEmail.txt');
+
+		print $body;
 
 	}
 
+	public function markSent() {
+		
+	}
 
 	
 

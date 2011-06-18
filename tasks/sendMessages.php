@@ -13,3 +13,4 @@ var_dump($c->users);
 $c->filterUsersCanReceiveMessages();
 var_dump($c->users);
 $c->sendToUsers();
+$c->markSent();

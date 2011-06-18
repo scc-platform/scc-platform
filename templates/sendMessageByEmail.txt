@@ -1,0 +1,8 @@
+
+Hello,
+
+Someone has sent you this message:
+
+{$message['body']}
+
+
