@@ -38,8 +38,9 @@ function getSmarty() {
 
 
 function mustBeLoggedIn() {
+	global $CURRENT_USER;
 	checkUserSession();
-	if ($CURRENT_USER) {
+	if (!$CURRENT_USER) {
 		header('Location: /');
 		die();
 	}
