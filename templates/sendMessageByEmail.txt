@@ -1,0 +1,8 @@
+
+Hello,
+
+{$fromUser['email']} has sent you this message:
+
+{$message['body']}
+
+

@@ -16,9 +16,9 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
@@ -48,7 +48,6 @@ table {
 }
 
 /* Default Styles - A starting point */
-/*Default styles*/
 body {font-family:helvetica, verdana, sans-serif;font-size:1.0em;color:#000;}
 
 a {font-size:1.0em;color:#000;text-decoration:underline;}
@@ -57,5 +56,73 @@ a:visited {font-size:1.0em;color:#000; text-decoration:underline;}
 a:hover {font-size:1.0em;color:#000; text-decoration:underline;}
 a:active {font-size:1.0em;color:#000; text-decoration:underline;}
 
+a.selected {background-color:#ccc;}
+a.selected:link {background-color:#ccc;}
+a.selected:visited {background-color:#ccc;}
+a.selected:hover {background-color:#ccc;}
+a.selected:active {background-color:#ccc;}
+
 #container {width:80%;margin:0px auto;}
-#header {}
+#header {width:100%;height:70px;border-bottom:solid 1px #000;margin:10px 0px;}
+#header #top {width:100%;height:30px;}
+#login {float:right;}
+#logo {float:left;}
+#menu {width:100%;margin-top:0px;}
+#menu div {float:left;border:solid 1px #ccc;margin-left:20px;padding:4px 8px;position:inline;}
+#middle {width:100%;min-height:500px;}
+#footer {width:100%;height:30px;background-color:#eee;}
+
+/* header top - login/signup/logout links */
+#loginLink, #signupLink, #logoutLink {
+	padding:2px 4px;
+	border:solid 1px #fff;
+	background-color:#fff;
+}
+
+#loginLink.selected, #signupLink.selected, #logoutLink.selected {
+	padding:2px 4px;
+	border:solid 1px #ccc;
+	background-color:#ccc;}
+
+/* Default form Styles */
+.form .textfield {
+	border:solid 1px #000;
+}
+.form .submit {
+	border:solid 1px #000;
+	padding:4px 8px;
+}
+.form .input, .buttons {
+	width:100%;
+	height:30px;
+}
+.form label {
+	float:left;
+}
+.form input {
+	float:right;
+}
+.form {
+	padding:30px 50px;
+}
+
+/* login & signup forms */
+#signupForm {
+	width:30%;
+	margin:0px auto;
+	margin-top:100px;
+	border:solid 1px #000;
+	-moz-border-radius: 5px;
+	border-radius: 8px;
+}
+
+#loginForm {
+	width:30%;
+	margin:0px auto;
+	margin-top:100px;
+	border:solid 1px #000;
+	-moz-border-radius: 5px;
+	border-radius: 8px;
+}
+
+

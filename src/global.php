@@ -35,6 +35,15 @@ function getSmarty() {
 	return $s;
 }
 
+/** @return Smarty **/
+function getEmailSmarty() {
+	require_once dirname(__FILE__).'/../smarty/Smarty.class.php';
+	$s = new Smarty();
+	$s->template_dir = dirname(__FILE__) . '/../templates/';
+	$s->compile_dir = dirname(__FILE__) . '/../smarty_c/';
+	return $s;
+}
+
 
 
 function mustBeLoggedIn() {

@@ -21,9 +21,26 @@
 		<div id="container">
 
 			<div id="header">
-				{if $currentUser}
-					<div>Welcome {$currentUser['username']}</div>
-				{/if}
+				<div id="top">
+					<div id="logo">ShareCareClub.org</div>
+				
+					<div id="login">
+					{if $currentUser}
+						Welcome {$currentUser['username']}
+					{else}
+						<span id="loginLink" {if $smarty.server.PHP_SELF == '/login.php'}class="selected" {/if}><a href="login.php">Login</a></span> | <span id="signupLink" {if $smarty.server.PHP_SELF == '/signup.php'}class="selected" {/if}><a href="signup.php" >Join</a></span>
+					{/if}
+					</div>
+				</div>
+				
+				<div id="menu">
+					<div><a href="/">Home</a></div>
+					<div><a href="">Take A Tour</a></div>
+					<div><a href="">Sharers</a></div>
+					<div><a href="">Carers</a></div>
+					<div><a href="">About Us</a></div>
+					<div><a href="">Contact Us</a></div>
+				</div>
 			</div>
 			
 				<div id="middle">
