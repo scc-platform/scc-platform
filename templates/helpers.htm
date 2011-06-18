@@ -10,16 +10,18 @@
 <li>
 {$helper.username} ({$helper.id}) {$helper.status}
 {if $helper.status == 'pending'}
-<form action='/links.php' method='post' name='approval'>
+<form action='/helpers.php' method='post' name='approval'>
 <input type='hidden' name='userID' value='{$helper.id}'/>
 <input type='submit' name='action' value='approve'/>
 </form>
 {/if}
-<form action='/links.php' method='post' name='ignore'>
+<form action='/helpers.php' method='post' name='ignore'>
 <input type='hidden' name='userID' value='{$helper.id}'/>
 <input type='submit' name='action' value='ignore'/>
 </form>
 </li>
+{foreachelse}
+<li>Sorry, you don't have any "helpers" yet</li>
 {/foreach}
 </ol>
 
