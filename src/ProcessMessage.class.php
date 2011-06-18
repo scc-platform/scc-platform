@@ -6,7 +6,9 @@ class ProcessMessage {
 	/** should be private, public for ease of debugging for now **/
 	public $messsageData;
 	/** should be private, public for ease of debugging for now **/
-	public $users;
+	public $desiredToUsers;
+	/** should be private, public for ease of debugging for now **/
+	public $actualToUsers;
 
 	private $fromUser;
 
@@ -37,18 +39,28 @@ class ProcessMessage {
 			$s->bindValue('uid', $this->messsageData['carer_id']);
 		}
 		$s->execute();
-		$this->users = array();
+		$this->desiredToUsers = array();
 		while($d = $s->fetch(PDO::FETCH_ASSOC)) {
-			$this->users[] = $d;
+			$this->desiredToUsers[] = $d;
 		}
 	}
 
 	function filterUsersCanReceiveMessages() {
-		
+		$this->actualToUsers = array();
+		foreach($this->desiredToUsers as $user) {
+
+			// get Prefs for this user.
+			$c = new PreferencesController($user['id']);
+
+			if ($c->isActive()) {
+				$this->actualToUsers[] = $user;
+			}
+
+		}
 	}
 
 	function sendToUsers() {
-		foreach($this->users as $user) {
+		foreach($this->actualToUsers as $user) {
 
 
 			$this->email($user);
