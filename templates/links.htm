@@ -1,0 +1,28 @@
+
+
+{include file="header.htm"}
+
+
+<h2>Your helpers!</h2>
+
+<ol>
+{foreach from=$helpers item=helper}
+<li>
+{$helper.username} ({$helper.id}) {$helper.status}
+{if $helper.status == 'pending'}
+<form action='/links.php' method='post' name='approval'>
+<input type='hidden' name='approve' value='{$helper.id}'/>
+<input type='submit' name='action' value='approve'/>
+</form>
+{/if}
+<form action='/links.php' method='post' name='ignore'>
+<input type='hidden' name='approve' value='{$helper.id}'/>
+<input type='submit' name='action' value='ignore'/>
+</form>
+</li>
+{/foreach}
+</ol>
+
+
+{include file="footer.htm"}
+

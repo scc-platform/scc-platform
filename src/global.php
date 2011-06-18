@@ -62,7 +62,7 @@ function checkUserSession() {
 	session_start();
 	if (isset($_SESSION['userID']) && intval($_SESSION['userID']) > 0) {
 		$db = getDB();
-		$stat = $db->prepare("SELECT * FROM users WHERE id=:id");
+		$stat = $db->prepare("SELECT u.*, l.username FROM users u LEFT JOIN logins l on l.user_id = u.id WHERE u.id=:id");
 		$stat->execute(array('id'=>$_SESSION['userID']));
 		if ($stat->rowCount() == 1) {
 			$CURRENT_USER = $stat->fetch(PDO::FETCH_ASSOC);
