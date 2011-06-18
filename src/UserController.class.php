@@ -34,11 +34,12 @@ class UserController {
 			SELECT u.*, h.*, l.username FROM helpers h 
 			JOIN users u on u.id = h.helper_id
 			JOIN logins l on l.user_id = u.id
-			WHERE h.carer_id = :userid";
+			WHERE h.carer_id = :userid
+			AND h.status > -1";
         $s = $db->prepare($sql);
         $s->execute(array('userid'=>$_SESSION['userID']));
 
-        if ($s->rowCount() > 1) {
+        if ($s->rowCount() > 0) {
             while($link = $s->fetch(PDO::FETCH_ASSOC)) {
 				$link['status'] = $link['status'] ? 'approved' : 'pending';  
 				$links[] =  $link;
@@ -47,5 +48,28 @@ class UserController {
 
         return $links;
     }
+
+	function approve($helperID) {
+		$this->approveOrIgnore($helperID, 1);
+	}
+
+	function ignore($helperID) {
+		$this->approveOrIgnore($helperID, -1);
+	}
+
+	private function approveOrIgnore($helperID, $status) {
+		$links = array();
+        $db = getDB();
+        $sql = "UPDATE helpers 
+			SET status = :status 
+			WHERE helper_id = :helperid 
+			AND carer_id = :userid ";
+        $data = array(
+			'status' => $status,
+			'helperid'=>$helperID,
+        	'userid'=>$_SESSION['userID']);
+        $s = $db->prepare($sql);
+        $s->execute($data);
+	}
 
 }
