@@ -62,6 +62,9 @@ a.selected:visited {background-color:#ccc;}
 a.selected:hover {background-color:#ccc;}
 a.selected:active {background-color:#ccc;}
 
+.link {background-color:#fff;}
+.link.selected{background-color:#ccc;}
+
 #container {width:80%;margin:0px auto;}
 #header {width:100%;height:70px;border-bottom:solid 1px #000;margin:10px 0px;}
 #header #top {width:100%;height:30px;}
@@ -69,6 +72,8 @@ a.selected:active {background-color:#ccc;}
 #logo {float:left;}
 #menu {width:100%;margin-top:0px;}
 #menu div {float:left;border:solid 1px #ccc;margin-left:20px;padding:4px 8px;position:inline;}
+#menuService {width:100%;margin-top:0px;height:30px;margin-bottom:30px;}
+#menuService div {float:left;border:solid 1px #ccc;margin-left:20px;padding:4px 8px;position:inline;}
 #middle {width:100%;min-height:500px;}
 #footer {width:100%;height:30px;background-color:#eee;}
 
@@ -88,6 +93,11 @@ a.selected:active {background-color:#ccc;}
 .form .textfield {
 	border:solid 1px #000;
 }
+.form .textarea {
+	width:200px;
+	height:80px;
+}
+
 .form .submit {
 	border:solid 1px #000;
 	padding:4px 8px;
@@ -96,10 +106,13 @@ a.selected:active {background-color:#ccc;}
 	width:100%;
 	height:30px;
 }
+.form .input.textarea {
+	height:100px;
+}
 .form label {
 	float:left;
 }
-.form input {
+.form input, textarea {
 	float:right;
 }
 .form {
@@ -108,7 +121,7 @@ a.selected:active {background-color:#ccc;}
 
 /* login & signup forms */
 #signupForm {
-	width:30%;
+	width:450px;
 	margin:0px auto;
 	margin-top:100px;
 	border:solid 1px #000;
@@ -117,12 +130,23 @@ a.selected:active {background-color:#ccc;}
 }
 
 #loginForm {
-	width:30%;
+	width:450px;
 	margin:0px auto;
 	margin-top:100px;
 	border:solid 1px #000;
 	-moz-border-radius: 5px;
 	border-radius: 8px;
 }
+
+/* Send a message form */
+#newMessage {
+	width:450px;
+	margin:0px auto;
+	margin-top:100px;
+	border:solid 1px #000;
+	-moz-border-radius: 5px;
+	border-radius: 8px;
+}
+
 
 

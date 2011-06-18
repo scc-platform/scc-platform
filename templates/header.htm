@@ -44,6 +44,12 @@
 				</div>
 			</div>
 			
+			{if $currentUser}
+			<div id="menuService">
+				<div class="link {if $smarty.server.PHP_SELF == '/send.php'}selected{/if}"><a href="send.php">Send A Message</a></div>
+			</div>			
+			{/if}
+			
 				<div id="middle">
 
 
