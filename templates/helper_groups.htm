@@ -10,23 +10,31 @@
 <input type='submit' name='action' value='add'/>
 </form>
 
-<ol>
+<ul>
 {foreach from=$helper_groups item=group}
-<li>
-{$group.title} (#{$group.id})
-<form action='/helper_groups.php' method='post' name='delete' onsubmit="return confirm('Delete? Are you sure');">
-<input type='hidden' name='groupID' value='{$group.id}'/>
-<input type='submit' name='action' value='delete'/>
-</form>
-{foreach from=$helpers_in_groups[$group.id] item=helper}
-{$helper.username}
-{/foreach}
-</li>
+	<li>
+		{$group.title} (#{$group.id})
+		<form action='/helper_groups.php' method='post' name='delete' onsubmit="return confirm('Delete? Are you sure');">
+			<input type='hidden' name='groupID' value='{$group.id}'/>
+			<input type='submit' name='action' value='delete'/>
+		</form>
+	
+		<div id="helpers-in-group">
+			<h3>Helpers in your {$group.title} group:</h3>
+			<ul>
+			{foreach from=$helpers_in_groups[$group.id] item=helper}
+				<li>{$helper.username}</li>
+			{foreachelse}
+				<li>Sorry, you don't have any "helpers" in this group yet</li>
+			{/foreach}
+			</ul>
+		</div>
+	
+	</li>
 {foreachelse}
-<li>Sorry, you don't have any "helper groups" yet</li>
+	<li>Sorry, you don't have any "helper groups" yet</li>
 {/foreach}
-</ol>
-
+</ul>
 
 
 {include file="footer.htm"}
