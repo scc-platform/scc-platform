@@ -151,16 +151,37 @@ CREATE TABLE `help_msg_type` (
 
 -- ---
 -- Table 'pref_help_type'
--- 
+--
 -- ---
 
 DROP TABLE IF EXISTS `pref_help_type`;
-		
+
 CREATE TABLE `pref_help_type` (
   `pref_id` INTEGER NOT NULL ,
   `help_type_id` INTEGER NOT NULL,
   PRIMARY KEY (`pref_id`,`help_type_id`)
 );
+
+
+
+-- ---
+-- Table 'help_msg_to_user'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `help_msg_to_user`;
+		
+CREATE TABLE `help_msg_to_user` (
+  `help_msg_id` INTEGER NOT NULL ,
+  `user_id` INTEGER NOT NULL,
+  `sent_email` INTEGER NOT NULL DEFAULT false,
+  `sent_txt` INTEGER NOT NULL DEFAULT false,
+  `sent_twitter` INTEGER NOT NULL DEFAULT false,
+  PRIMARY KEY (`help_msg_id`,`user_id`)
+);
+
+
+
 
 -- ---
 -- Foreign Keys 

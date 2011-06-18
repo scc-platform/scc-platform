@@ -13,13 +13,13 @@ if (isset($_GET['action']) && $_GET['action'] == 'help' &&
 elseif (isset($_POST['action']) && $_POST['action'] == 'approve' && 
 	isset($_POST['userID']) && ctype_digit($_POST['userID'])) {
 	$c->approve($_POST['userID']);
-	header("Location: /links.php");
+	header("Location: /helpers.php");
 	die();
 }
 elseif (isset($_POST['action']) && $_POST['action'] == 'ignore' && 
 	isset($_POST['userID']) && ctype_digit($_POST['userID'])) {
 	$c->ignore($_POST['userID']);
-	header("Location: /links.php");
+	header("Location: /helpers..php");
 	die();
 }
 
@@ -27,6 +27,6 @@ $helpers = $c->helpers();
 
 $s = getSmarty();
 $s->assign('helpers', $helpers);
-$s->display('links.htm');
+$s->display('helpers.htm');
 
 

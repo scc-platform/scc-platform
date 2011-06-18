@@ -6,7 +6,9 @@ class ProcessMessage {
 	/** should be private, public for ease of debugging for now **/
 	public $messsageData;
 	/** should be private, public for ease of debugging for now **/
-	public $users;
+	public $desiredToUsers;
+	/** should be private, public for ease of debugging for now **/
+	public $actualToUsers;
 
 	private $fromUser;
 
@@ -37,24 +39,48 @@ class ProcessMessage {
 			$s->bindValue('uid', $this->messsageData['carer_id']);
 		}
 		$s->execute();
-		$this->users = array();
+		$this->desiredToUsers = array();
 		while($d = $s->fetch(PDO::FETCH_ASSOC)) {
-			$this->users[] = $d;
+			$this->desiredToUsers[] = $d;
 		}
 	}
 
 	function filterUsersCanReceiveMessages() {
-		
+		$this->actualToUsers = array();
+		foreach($this->desiredToUsers as $user) {
+
+			// get Prefs for this user.
+			$c = new PreferencesController($user['id']);
+
+			if ($c->isActive()) {
+				$this->actualToUsers[] = $user;
+			}
+
+		}
 	}
 
 	function sendToUsers() {
-		foreach($this->users as $user) {
+		$db = getDB();
+		$s = $db->prepare("INSERT INTO help_msg_to_user (help_msg_id,user_id,sent_email,sent_txt,sent_twitter) ".
+				"VALUES (:help_msg_id,:user_id,:sent_email,:sent_txt,:sent_twitter)");
+		$s->bindValue('help_msg_id', $this->messsageData['id']);
+		foreach($this->actualToUsers as $user) {
+			$s->bindValue('user_id', $user['id']);
 
 
 			$this->email($user);
+			$s->bindValue('sent_email', true);
+
+			$s->bindValue('sent_txt', false);
+
+			$s->bindValue('sent_twitter', false);
 
 
+			$s->execute();
 		}
+
+		$s = $db->prepare("UPDATE help_msg SET sent_at=NOW() WHERE id=:id ");
+		$s->execute(array('id'=>$this->messsageData['id']));
 	}
 
 	private function email($userData) {
@@ -67,10 +93,6 @@ class ProcessMessage {
 
 		print $body;
 
-	}
-
-	public function markSent() {
-		
 	}
 
 	
