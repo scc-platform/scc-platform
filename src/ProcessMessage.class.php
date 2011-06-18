@@ -14,7 +14,7 @@ class ProcessMessage {
 		$db = getDB();
 		$s = $db->prepare("SELECT * FROM help_msg WHERE sent_at IS NULL ORDER BY created_at ASC");
 		$s->execute();
-		if ($s->rowCount() == 1) {
+		if ($s->rowCount() > 0) {
 			$this->messsageData = $s->fetch(PDO::FETCH_ASSOC);
 
 			$s = $db->query("SELECT * FROM users WHERE id=".$this->messsageData['carer_id']);
