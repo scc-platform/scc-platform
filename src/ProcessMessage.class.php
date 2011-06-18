@@ -8,12 +8,18 @@ class ProcessMessage {
 	/** should be private, public for ease of debugging for now **/
 	public $users;
 
+	private $fromUser;
+
 	function loadNext() {
 		$db = getDB();
 		$s = $db->prepare("SELECT * FROM help_msg WHERE sent_at IS NULL ORDER BY created_at ASC");
 		$s->execute();
 		if ($s->rowCount() == 1) {
 			$this->messsageData = $s->fetch(PDO::FETCH_ASSOC);
+
+			$s = $db->query("SELECT * FROM users WHERE id=".$this->messsageData['carer_id']);
+			$this->fromUser = $s->fetch(PDO::FETCH_ASSOC);
+
 			return true;
 		}
 		return false;
@@ -38,7 +44,7 @@ class ProcessMessage {
 	}
 
 	function filterUsersCanReceiveMessages() {
-
+		
 	}
 
 	function sendToUsers() {
@@ -55,6 +61,7 @@ class ProcessMessage {
 
 		$s = getEmailSmarty();
 		$s->assign('toUser',$userData);
+		$s->assign('fromUser',$this->fromUser);
 		$s->assign('message',$this->messsageData);
 		$body = $s->fetch('sendMessageByEmail.txt');
 

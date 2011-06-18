@@ -1,7 +1,7 @@
 
 Hello,
 
-Someone has sent you this message:
+{$fromUser['email']} has sent you this message:
 
 {$message['body']}
 
