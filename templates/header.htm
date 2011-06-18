@@ -21,9 +21,26 @@
 		<div id="container">
 
 			<div id="header">
-				{if $currentUser}
-					<div>Welcome {$currentUser['id']}</div>
-				{/if}
+				<div id="top">
+					<div id="logo">ShareCareClub.org</div>
+				
+					<div id="login">
+					{if $currentUser}
+						Welcome {$currentUser['id']}
+					{else}
+						<a href="login.php">login</a> | <a href="signup.php">join</a>
+					{/if}
+					</div>
+				</div>
+				
+				<div id="menu">
+					<div><a href="/">Home</a></div>
+					<div><a href="">Take A Tour</a></div>
+					<div><a href="">Sharers</a></div>
+					<div><a href="">Carers</a></div>
+					<div><a href="">About Us</a></div>
+					<div><a href="">Contact Us</a></div>
+				</div>
 			</div>
 			
 				<div id="middle">
