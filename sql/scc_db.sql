@@ -17,7 +17,7 @@
 DROP TABLE IF EXISTS `users`;
 		
 CREATE TABLE `users` (
-  `id` INTEGER AUTO_INCREMENT DEFAULT NULL,
+  `id` INTEGER AUTO_INCREMENT NOT NULL,
   `email` VARCHAR(255) DEFAULT NULL,
   `phone` VARCHAR(100) DEFAULT NULL,
   `twitter` VARCHAR(20) DEFAULT NULL,
@@ -33,12 +33,11 @@ CREATE TABLE `users` (
 DROP TABLE IF EXISTS `helpers`;
 		
 CREATE TABLE `helpers` (
-  `id` INTEGER AUTO_INCREMENT DEFAULT NULL,
-  `carer_id` INTEGER DEFAULT NULL,
-  `helper_id` INTEGER DEFAULT NULL,
-  `requested_by_id` INTEGER DEFAULT NULL,
-  `status` INTEGER DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `carer_id` INTEGER NOT NULL,
+  `helper_id` INTEGER NOT NULL,
+  `requested_by_id` INTEGER NOT NULL,
+  `status` INTEGER NOT NULL DEFAULT 0,
+  PRIMARY KEY (`carer_id`,`helper_id`)
 );
 
 -- ---
@@ -49,14 +48,14 @@ CREATE TABLE `helpers` (
 DROP TABLE IF EXISTS `help_msg`;
 		
 CREATE TABLE `help_msg` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `id` INTEGER AUTO_INCREMENT NOT NULL,
   `when` DATETIME NULL DEFAULT NULL,
-  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NOT NULL,
   `is_open` INTEGER NULL DEFAULT NULL,
   `sent_at` TIMESTAMP NULL DEFAULT NULL,
-  `body` MEDIUMTEXT NULL DEFAULT NULL,
+  `body` MEDIUMTEXT NOT NULL,
   `helper_group_id` INTEGER NULL DEFAULT NULL,
-  `assinged_to_helper_id` INTEGER NULL DEFAULT NULL,
+  `assigned_to_helper_id` INTEGER NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -68,9 +67,9 @@ CREATE TABLE `help_msg` (
 DROP TABLE IF EXISTS `help_type`;
 
 CREATE TABLE `help_type` (
-  `id` INTEGER AUTO_INCREMENT DEFAULT NULL,
-  `carer_id` INTEGER DEFAULT NULL,
-  `title` VARCHAR(100) DEFAULT NULL,
+  `id` INTEGER AUTO_INCREMENT NOT NULL,
+  `carer_id` INTEGER NOT NULL,
+  `title` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -82,13 +81,13 @@ CREATE TABLE `help_type` (
 DROP TABLE IF EXISTS `preferences`;
 		
 CREATE TABLE `preferences` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `user_id` INTEGER NULL DEFAULT NULL,
-  `is_active` INTEGER NULL DEFAULT NULL,
-  `use_email` INTEGER NULL DEFAULT NULL,
+  `id` INTEGER AUTO_INCREMENT NOT NULL,
+  `user_id` INTEGER NOT NULL,
+  `is_active` INTEGER NOT NULL DEFAULT true,
+  `use_email` INTEGER NOT NULL DEFAULT true,
   `day` INTEGER NULL DEFAULT NULL,
-  `use_txt` INTEGER NULL DEFAULT NULL,
-  `use_twitter` INTEGER NULL DEFAULT NULL,
+  `use_txt` INTEGER NOT NULL DEFAULT true,
+  `use_twitter` INTEGER NOT NULL DEFAULT true,
   `start_time` TIME NULL DEFAULT NULL,
   `end_time` TIME NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -102,9 +101,9 @@ CREATE TABLE `preferences` (
 DROP TABLE IF EXISTS `helper_groups`;
 		
 CREATE TABLE `helper_groups` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `user_id` INTEGER NULL DEFAULT NULL,
-  `title` VARCHAR(100) DEFAULT NULL,
+  `id` INTEGER AUTO_INCREMENT NOT NULL,
+  `user_id` INTEGER NOT NULL,
+  `title` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -116,10 +115,10 @@ CREATE TABLE `helper_groups` (
 DROP TABLE IF EXISTS `logins`;
 		
 CREATE TABLE `logins` (
-  `user_id` INTEGER NULL DEFAULT NULL,
-  `username` VARCHAR(255) DEFAULT NULL,
-  `password` VARCHAR(255) DEFAULT NULL,
-  `salt` VARCHAR(255) DEFAULT NULL,
+  `user_id` INTEGER NOT NULL,
+  `username` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `salt` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`user_id`)
 );
 
@@ -131,9 +130,9 @@ CREATE TABLE `logins` (
 DROP TABLE IF EXISTS `helper_in_group`;
 		
 CREATE TABLE `helper_in_group` (
-  `helper_group_id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `helper_id` INTEGER NULL DEFAULT NULL,
-  PRIMARY KEY (`helper_group_id`)
+  `helper_group_id` INTEGER NOT NULL,
+  `helper_id` INTEGER NOT NULL,
+  PRIMARY KEY (`helper_group_id`,`helper_id`)
 );
 
 -- ---
@@ -144,9 +143,9 @@ CREATE TABLE `helper_in_group` (
 DROP TABLE IF EXISTS `help_msg_type`;
 		
 CREATE TABLE `help_msg_type` (
-  `help_msg_id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `help_type_id` INTEGER NULL DEFAULT NULL,
-  PRIMARY KEY (`help_msg_id`)
+  `help_msg_id` INTEGER NOT NULL,
+  `help_type_id` INTEGER NOT NULL,
+  PRIMARY KEY (`help_msg_id`,`help_type_id`)
 );
 
 -- ---
@@ -157,9 +156,9 @@ CREATE TABLE `help_msg_type` (
 DROP TABLE IF EXISTS `pref_help_type`;
 		
 CREATE TABLE `pref_help_type` (
-  `pref_id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `help_type_id` INTEGER NULL DEFAULT NULL,
-  PRIMARY KEY (`pref_id`)
+  `pref_id` INTEGER NOT NULL ,
+  `help_type_id` INTEGER NOT NULL,
+  PRIMARY KEY (`pref_id`,`help_type_id`)
 );
 
 -- ---
