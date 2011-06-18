@@ -31,6 +31,31 @@ function getSmarty() {
 	$s = new Smarty();
 	$s->template_dir = dirname(__FILE__) . '/../templates/';
 	$s->compile_dir = dirname(__FILE__) . '/../smarty_c/';
+	$s->assign('currentUser',$CURRENT_USER);
 	return $s;
 }
 
+
+
+function mustBeLoggedIn() {
+	checkUserSession();
+	if ($CURRENT_USER) {
+		header('Location: /');
+		die();
+	}
+}
+
+$CURRENT_USER = null;
+
+function checkUserSession() {
+	global $CURRENT_USER;
+	session_start();
+	if (isset($_SESSION['userID']) && intval($_SESSION['userID']) > 0) {
+		$db = getDB();
+		$stat = $db->prepare("SELECT * FROM users WHERE id=:id");
+		$stat->execute(array('id'=>$_SESSION['userID']));
+		if ($stat->rowCount() == 1) {
+			$CURRENT_USER = $stat->fetch(PDO::FETCH_ASSOC);
+		}
+	}
+}
