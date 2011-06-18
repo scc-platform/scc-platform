@@ -13,4 +13,3 @@ var_dump($c->desiredToUsers);
 $c->filterUsersCanReceiveMessages();
 var_dump($c->actualToUsers);
 $c->sendToUsers();
-$c->markSent();
