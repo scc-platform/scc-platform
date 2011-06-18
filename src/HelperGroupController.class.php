@@ -40,11 +40,18 @@ class HelperGroupController {
         $s->execute(array('groupid'=>$groupID, 'helperid'=>$helperID));
 	}
 
+	function removeFromGroup($groupID, $helperID) {
+        $db = getDB();
+        $sql = " DELETE FROM helper_in_group WHERE helper_group_id = :groupid AND helper_id = :helperid";
+        $s = $db->prepare($sql);
+        $s->execute(array('groupid'=>$groupID, 'helperid'=>$helperID));
+	}
+
     function helpers_in_groups() {
 		$helpers= array();
         $db = getDB();
         $sql = "
-		 	SELECT l.username, hig.helper_id, hig.helper_group_id, hg.title as helper_group_title
+		 	SELECT u.id, l.username, hig.helper_id, hig.helper_group_id, hg.title as helper_group_title
 			FROM helper_in_group hig
 			JOIN helper_groups hg ON hg.id = hig.helper_group_id
 			JOIN helpers h ON h.helper_id = hig.helper_id AND h.carer_id = :userid  

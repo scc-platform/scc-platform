@@ -20,14 +20,33 @@
 		</form>
 	
 		<div id="helpers-in-group">
-			<h3>Helpers in your {$group.title} group:</h3>
+			<h3>Helpers in your &quot;{$group.title}&quot; group:</h3>
 			<ul>
 			{foreach from=$helpers_in_groups[$group.id] item=helper}
-				<li>{$helper.username}</li>
+				<li>
+					{$helper.username}
+					<form action='/helper_groups.php' method='post' name='remove' onsubmit="return confirm('Remove? Are you sure');">
+						<input type='hidden' name='groupID' value='{$group.id}'/>
+						<input type='hidden' name='userID' value='{$helper.id}'/>
+						<input type='submit' name='action' value='remove'/>
+					</form>
+					</li>
 			{foreachelse}
 				<li>Sorry, you don't have any "helpers" in this group yet</li>
 			{/foreach}
 			</ul>
+			<form action='/helper_groups.php' method='post' name='addTo'>
+				<label for="group_id">Add a Helper to your &quot;{$group.title}&quot; Group:</label>
+				<select name="userID">
+					<option value=''>--</option>
+					{foreach from=$helpers item=helper name=helpers}
+				   	<option value='{$helper.id}'>{$helper.username}</option>
+					{/foreach}
+				</select>
+				<input type='hidden' name='groupID' value='{$group.id}'/>
+				<input type='hidden' name='action' value='addto'/>
+				<input type='submit' name='submit' value='add'/>
+			</form>
 		</div>
 	
 	</li>
