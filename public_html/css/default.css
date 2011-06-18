@@ -119,8 +119,8 @@ a.selected:active {background-color:#ccc;}
 	padding:30px 50px;
 }
 
-/* login & signup forms */
-#signupForm {
+/* forms */
+#loginForm, #signupForm, #newMessage {
 	width:450px;
 	margin:0px auto;
 	margin-top:100px;
@@ -129,24 +129,6 @@ a.selected:active {background-color:#ccc;}
 	border-radius: 8px;
 }
 
-#loginForm {
-	width:450px;
-	margin:0px auto;
-	margin-top:100px;
-	border:solid 1px #000;
-	-moz-border-radius: 5px;
-	border-radius: 8px;
-}
-
-/* Send a message form */
-#newMessage {
-	width:450px;
-	margin:0px auto;
-	margin-top:100px;
-	border:solid 1px #000;
-	-moz-border-radius: 5px;
-	border-radius: 8px;
-}
 
 
 
