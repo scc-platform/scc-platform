@@ -1,0 +1,30 @@
+
+
+{include file="header.htm"}
+
+
+<h2>Your helper groups</h2>
+
+<form action='/helper_groups.php' method='post' name='add' >
+<input type='input' name='title' value=''/>
+<input type='submit' name='action' value='add'/>
+</form>
+
+<ol>
+{foreach from=$helper_groups item=group}
+<li>
+{$group.title} (#{$group.id})
+<form action='/helper_groups.php' method='post' name='delete' onsubmit="return confirm('Delete? Are you sure');">
+<input type='hidden' name='groupID' value='{$group.id}'/>
+<input type='submit' name='action' value='delete'/>
+</form>
+</li>
+{foreachelse}
+<li>Sorry, you don't have any "helper groups" yet</li>
+{/foreach}
+</ol>
+
+
+
+{include file="footer.htm"}
+
