@@ -4,6 +4,7 @@ checkUserSession();
 mustBeLoggedIn();
 
 $c = new UserController();
+$h = new HelperGroupController();
 $s = getSmarty();
 
 // 'user' is the carer they want to 'help'
@@ -26,8 +27,10 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'ignore' &&
 }
 
 $helpers = $c->helpers();
+$helper_groups = $h->groups();
 
 $s->assign('helpers', $helpers);
+$s->assign('helper_groups', $helper_groups);
 $s->display('helpers.htm');
 
 

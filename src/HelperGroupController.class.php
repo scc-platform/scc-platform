@@ -33,5 +33,13 @@ class HelperGroupController {
         $s->execute(array('groupid' => $groupID, 'userid'=>$_SESSION['userID']));
 	}
 
+	function addToGroup($groupID, $helperID) {
+        $db = getDB();
+        $sql = " INSERT IGNORE into helper_in_group (helper_group_id, helper_id) VALUES (:groupid, :helperid)";
+        $s = $db->prepare($sql);
+        $s->execute(array('groupid'=>$groupID, 'helperid'=>$helperID));
+	}
+
+
 
 }

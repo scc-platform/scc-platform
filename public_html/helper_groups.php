@@ -21,7 +21,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'addto' &&
 	isset($_POST['groupID']) && ctype_digit($_POST['groupID']) &&
 	isset($_POST['userID']) && ctype_digit($_POST['userID'])) {
 	$c->addToGroup($_POST['groupID'], $_POST['userID']);
-	header('Location: /helper_groups.php');
+	header('Location: /helpers.php');
 	exit();
 }
 
