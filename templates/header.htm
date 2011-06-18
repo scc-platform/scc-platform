@@ -28,7 +28,7 @@
 					{if $currentUser}
 						Welcome {$currentUser['id']}
 					{else}
-						<a href="login.php">login</a> | <a href="signup.php">join</a>
+						<span id="loginLink" {if $smarty.server.PHP_SELF == '/login.php'}class="selected" {/if}><a href="login.php">Login</a></span> | <span id="signupLink" {if $smarty.server.PHP_SELF == '/signup.php'}class="selected" {/if}><a href="signup.php" >Join</a></span>
 					{/if}
 					</div>
 				</div>
