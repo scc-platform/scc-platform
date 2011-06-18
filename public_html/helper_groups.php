@@ -26,9 +26,11 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'addto' &&
 }
 
 $helper_groups = $c->groups();
+$helpers_in_groups = $c->helpers_in_groups();
 
 $s = getSmarty();
 $s->assign('helper_groups', $helper_groups);
+$s->assign('helpers_in_groups', $helpers_in_groups);
 $s->display('helper_groups.htm');
 
 

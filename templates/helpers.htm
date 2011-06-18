@@ -8,7 +8,7 @@
 
 <h2>Your helpers!</h2>
 
-<ol>
+<ul>
 {foreach from=$helpers item=helper}
 <li>
 {$helper.username} ({$helper.id}) {$helper.status}
@@ -25,7 +25,7 @@
 <form action='/helper_groups.php' method='post' name='addTo'>
 <select name="groupID">
         <option value=''>--</option>
-{foreach from=$helper_groups item=group}
+{foreach from=$helper_groups item=group name=helper_groups}
         <option value='{$group.id}'>{$group.title}</option>
 {/foreach}
 </select>
@@ -37,7 +37,7 @@
 {foreachelse}
 <li>Sorry, you don't have any "helpers" yet</li>
 {/foreach}
-</ol>
+</ul>
 
 
 {include file="footer.htm"}

@@ -40,6 +40,28 @@ class HelperGroupController {
         $s->execute(array('groupid'=>$groupID, 'helperid'=>$helperID));
 	}
 
+    function helpers_in_groups() {
+		$helpers= array();
+        $db = getDB();
+        $sql = "
+		 	SELECT l.username, hig.helper_id, hig.helper_group_id, hg.title as helper_group_title
+			FROM helper_in_group hig
+			JOIN helper_groups hg ON hg.id = hig.helper_group_id
+			JOIN helpers h ON h.helper_id = hig.helper_id AND h.carer_id = :userid  
+			JOIN users u on u.id = h.helper_id 
+			JOIN logins l on l.user_id = u.id
+			";
+        $s = $db->prepare($sql);
+        $s->execute(array('userid'=>$_SESSION['userID']));
+
+        if ($s->rowCount() > 0) {
+            while($g = $s->fetch(PDO::FETCH_ASSOC)) {
+				$helpers[$g['helper_group_id']][] =  $g;
+            }
+        }
+
+        return $helpers;
+    }
 
 
 }

@@ -18,6 +18,9 @@
 <input type='hidden' name='groupID' value='{$group.id}'/>
 <input type='submit' name='action' value='delete'/>
 </form>
+{foreach from=$helpers_in_groups[$group.id] item=helper}
+{$helper.username}
+{/foreach}
 </li>
 {foreachelse}
 <li>Sorry, you don't have any "helper groups" yet</li>
