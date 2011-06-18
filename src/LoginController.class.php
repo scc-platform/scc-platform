@@ -13,7 +13,7 @@ class LoginController {
 			$crypt =sha1($password.$user['salt']);
 			if ($crypt == $user['password']) {
 				session_start();
-				$_SESSION['userID'] = $user['id'];
+				$_SESSION['userID'] = $user['user_id'];
 				return true;
 			}
 		}
