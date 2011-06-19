@@ -6,6 +6,7 @@ mustBeLoggedIn();
 $h = new HelperGroupController();
 $c = new SendMessageController();
 $c->setCarerID($CURRENT_USER['id']);
+$ht = new HelpTypeController($CURRENT_USER['id']);
 
 if (isset($_POST['helper_group_id']) && ctype_digit($_POST['helper_group_id'])) {
 	$c->setHelperGroupId($_POST['helper_group_id']);
@@ -21,5 +22,6 @@ $helper_groups = $h->groups();
 
 $s = getSmarty();
 $s->assign('helper_groups', $helper_groups);
+$s->assign('helperTypes', $ht->getHelpTypes());
 $s->display('send.htm');
 

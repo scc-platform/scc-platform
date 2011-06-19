@@ -20,6 +20,16 @@
 				<textarea name="msg" class="textarea"></textarea>
 			</div>
 
+			<ul>
+				{foreach $helperTypes as $ht}
+					<li>
+						<input type="checkbox" name="helperTypes" value="{$ht['id']}" id="HelperType{$ht['id']}">
+						<label for="HelperType{$ht['id']}">{$ht['title']|escape}</label>
+					</li>
+				{/foreach}
+			</ul>
+
+
 
 			<div class="buttons">
 				<input type="submit" value="Send" class="submit">
