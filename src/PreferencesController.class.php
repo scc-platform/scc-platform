@@ -14,8 +14,11 @@ class PreferencesController {
 		$s = $db->prepare("SELECT * FROM preferences WHERE user_id=:id");
 		$s->execute(array('id'=>$userID));
 
-		$this->prefs = $s->fetch(PDO::FETCH_ASSOC);
-		$this->prefsID = $this->prefs['id'];
+		$x = $s->fetch(PDO::FETCH_ASSOC);
+		if ($x) {
+			$this->prefs = $x;
+			$this->prefsID = $this->prefs['id'];
+		}
 
 		$s = $db->prepare("SELECT * FROM users WHERE id=:id");
 		$s->execute(array('id'=>$userID));
@@ -29,7 +32,7 @@ class PreferencesController {
 	public function useEmail() {  return isset($this->prefs['use_email']) ? $this->prefs['use_email'] : true; }
 	public function useTxt() {  return isset($this->prefs['use_txt']) ? $this->prefs['use_txt'] : true; }
 	public function useTwitter() {  return isset($this->prefs['use_twitter']) ? $this->prefs['use_twitter'] : true; }
-	public function getPhone() {  return isset($this->prefs['phone']) ? $this->prefs['phone'] : true; }
+	public function getPhone() {  return isset($this->prefs['phone']) ? $this->prefs['phone'] : ''; }
 
 	public function setIsActive($v) { $this->prefs['is_active'] = (Boolean)$v; }
 	public function setUseEmail($v) { $this->prefs['use_email'] = (Boolean)$v; }
