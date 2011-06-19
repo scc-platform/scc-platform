@@ -122,6 +122,8 @@ CREATE TABLE `logins` (
   `salt` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`user_id`)
 );
+ALTER TABLE `logins` ADD UNIQUE INDEX (username);
+
 
 -- ---
 -- Table 'helper_in_group'
