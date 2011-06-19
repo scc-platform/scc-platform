@@ -76,7 +76,12 @@ class ProcessMessage {
 				$s->bindValue('sent_email', false);
 			}
 
-			$s->bindValue('sent_txt', false);
+			if ($c->useTxt()) {
+				$this->txt($user);
+				$s->bindValue('sent_txt', true);
+			} else {
+				$s->bindValue('sent_txt', false);
+			}
 
 			$s->bindValue('sent_twitter', false);
 
@@ -98,6 +103,36 @@ class ProcessMessage {
 
 		mail($userData['email'], 'Could you help '.$this->fromUser['email'], $body, 'From: '.EMAILS_FROM);
 		print $body;
+
+	}
+
+	private function txt($userData) {
+		if(!isset($userData['phone']) || strlen(trim($userData['phone'])) < 1) return; 
+		
+		$data = array(
+			"user" => CLICKATELL_USER,
+			"password" => CLICKATELL_PASS,
+			"api_id" => CLICKATELL_API,
+			"to" => $userData['phone'], 
+			"text" => substr($this->fromUser['email'] . ': ' . $this->messsageData['body'],0,160),
+		);
+		//https://api.clickatell.com/http/sendmsg?user=neillru&password=clickatell2314&api_id=3314357&to=447976939269&text=Meet+me+at+home
+		$url = "https://api.clickatell.com/http/sendmsg?".http_build_query($data);
+
+		// create a new cURL resource
+		$ch = curl_init();
+
+		// set URL and other appropriate options
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		@curl_setopt($ch , CURLOPT_SSL_VERIFYPEER, 0 );
+		@curl_setopt($ch , CURLOPT_SSL_VERIFYHOST, 0 );
+
+		// grab URL and pass it to the browser
+		curl_exec($ch);
+
+		// close cURL resource, and free up system resources
+		curl_close($ch);
 
 	}
 
