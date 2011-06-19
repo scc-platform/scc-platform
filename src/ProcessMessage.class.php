@@ -31,7 +31,7 @@ class ProcessMessage {
 		$db = getDB();
 		if ($this->messsageData['helper_group_id']) {
 			$s = $db->prepare("SELECT users.* FROM users JOIN helper_in_group ON helper_in_group.helper_id = users.id ".
-					"WHERE helper_in_group=:gid");
+					"WHERE helper_in_group.helper_group_id=:gid");
 			$s->bindValue('gid', $this->messsageData['helper_group_id']);
 		} else {
 			$s = $db->prepare("SELECT users.* FROM users JOIN helpers ON helpers.helper_id = users.id ".

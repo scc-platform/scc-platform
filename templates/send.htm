@@ -6,6 +6,16 @@
 		<form action="" method="post" class="form">
 
 			<div class="input textarea">
+				<label for="Group">Group</label>
+				<select name='helper_group_id' id="Group">
+							<option value=''>everyone</option> 
+						{foreach from=$helper_groups item=group}
+							<option value='{$group.id}'>{$group.title}</option> 
+						{/foreach}
+				</select>
+			</div>
+
+			<div class="input textarea">
 				<label for="Email">Message</label>
 				<textarea name="msg" class="textarea"></textarea>
 			</div>
