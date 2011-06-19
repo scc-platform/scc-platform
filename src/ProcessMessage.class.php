@@ -108,14 +108,13 @@ class ProcessMessage {
 
 	private function txt($userData) {
 		if(!isset($userData['phone']) || strlen(trim($userData['phone'])) < 1) return; 
-			var_dump($this->messsageData);
 		
 		$data = array(
 			"user" => CLICKATELL_USER,
 			"password" => CLICKATELL_PASS,
 			"api_id" => CLICKATELL_API,
 			"to" => $userData['phone'], 
-			"text" => $this->messsageData['body'],
+			"text" => substr($this->fromUser['email'] . ': ' . $this->messsageData['body'],0,160),
 		);
 		//https://api.clickatell.com/http/sendmsg?user=neillru&password=clickatell2314&api_id=3314357&to=447976939269&text=Meet+me+at+home
 		$url = "https://api.clickatell.com/http/sendmsg?".http_build_query($data);
