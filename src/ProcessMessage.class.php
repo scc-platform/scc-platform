@@ -96,6 +96,7 @@ class ProcessMessage {
 		$s->assign('message',$this->messsageData);
 		$body = $s->fetch('sendMessageByEmail.txt');
 
+		mail($userData['email'], 'Could you help '.$this->fromUser['email'], $body, 'From: '.EMAILS_FROM);
 		print $body;
 
 	}

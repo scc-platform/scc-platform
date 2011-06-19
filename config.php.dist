@@ -3,3 +3,7 @@
 define('DB_DSN','xxxxx');
 define('DB_USERNAME','xxxxx');
 define('DB_PASSWORD','xxxxx');
+
+
+define('EMAILS_FROM','test@example.com');
+

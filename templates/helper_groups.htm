@@ -12,7 +12,7 @@
 
 <ul>
 {foreach from=$helper_groups item=group}
-	<li>
+	<li style="border: 1px solid black; padding: 1px; margin: 10px;">
 		{$group.title} (#{$group.id})
 		<form action='/helper_groups.php' method='post' name='delete' onsubmit="return confirm('Delete? Are you sure');">
 			<input type='hidden' name='groupID' value='{$group.id}'/>
@@ -23,7 +23,7 @@
 			<h3>Helpers in your &quot;{$group.title}&quot; group:</h3>
 			<ul>
 			{foreach from=$helpers_in_groups[$group.id] item=helper}
-				<li>
+				<li style="border: 1px solid black; padding: 1px; margin: 10px;">
 					{$helper.username}
 					<form action='/helper_groups.php' method='post' name='remove' onsubmit="return confirm('Remove? Are you sure');">
 						<input type='hidden' name='groupID' value='{$group.id}'/>

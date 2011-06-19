@@ -1,6 +1,5 @@
 <?php
 require '../src/global.php';
-checkUserSession();
 mustBeLoggedIn();
 
 $h = new HelperGroupController();
