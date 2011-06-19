@@ -22,9 +22,9 @@
 
 			<ul>
 				{foreach $helperTypes as $ht}
-					<li>
-						<input type="checkbox" name="helperTypes[]" value="{$ht['id']}" id="HelperType{$ht['id']}">
-						<label for="HelperType{$ht['id']}">{$ht['title']|escape}</label>
+					<li style="display: block;">
+						<input style="float: none;" type="checkbox" name="helperTypes[]" value="{$ht['id']}" id="HelperType{$ht['id']}">
+						<label style="float: none;" for="HelperType{$ht['id']}">{$ht['title']|escape}</label>
 					</li>
 				{/foreach}
 			</ul>
