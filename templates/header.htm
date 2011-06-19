@@ -28,7 +28,7 @@
 						<div id="login">
 							<div id="home"><a href="/" title="Homepage"><img src="images/house.png"/></a></div>
 						{if $currentUser}
-							Welcome <a href="#" title="Your Account">{$currentUser['username']}</a> ({$currentUser['id']})
+							Welcome <a href="#" title="Your Account">{$currentUser['username']}</a>
 							<a href="logout.php" id="logoutLink" title="Logout">Logout</a>
 						{else}
 							<a id="loginLink" href="login.php" {if $smarty.server.PHP_SELF == '/login.php'}class="selected" {/if}>Login</a> | <a href="signup.php" id="signupLink" {if $smarty.server.PHP_SELF == '/signup.php'}class="selected" {/if}>Join</a>

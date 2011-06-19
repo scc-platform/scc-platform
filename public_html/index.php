@@ -4,7 +4,7 @@ checkUserSession();
 
 
 $s = getSmarty();
-$s->display('homepage.loggedout.htm');
+$s->display('index.htm');
 
 
 

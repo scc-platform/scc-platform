@@ -1,0 +1,131 @@
+
+/*1.1 YUI  V3 CSS  Reset 
+----------------------------------------------- */
+/*
+Copyright (c) 2010, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.com/yui/license.html
+version: 3.3.0
+build: 3167
+*/
+/*
+html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}
+*/
+/* Clearing floats without extra markup  */
+.clear{ display: inline-block; }
+.clear:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+
+/*
+* html .clearing{ height: 1%; }
+*/
+.clear { display: block; }
+/*clear floats*/
+.clearB{clear:both}
+.clearL{clear:left}
+.clearR{clear:right}
+/*margins*/
+.tm0{margin-top:0}
+.rm0{margin-right:0}
+.bm0{margin-bottom:0}
+.lm0{margin-left:0}
+/******* CONTENT ******************/
+/*
+body{font-family:Arial, Helvetica, sans-serif; font-size:81%}
+*/
+/*paragraphs*/
+p{margin-bottom:1.5em}
+/* links*/
+a{color:#650360}
+/* headings*/
+h1, h2,h3, h4, h5, h6{font-family:Georgia, "Times New Roman", Times, serif;color:#000;margin-bottom:2em;font-weight:normal}
+h1{font-size:2em;padding:0.3em 0}
+h2{font-size:1.3em;margin-bottom:0.3em}
+h3{}
+h4{}
+h5{}
+h6{}
+
+/* Backgrounds colors
+*****************************/
+/*font color to white - apart from bgFour ==grey*/
+.bgOne,.bgTwo,.bgThree{color:#fff}
+/*blue*/
+.bgOne{background-color:#221f72}
+/* purple */
+.bgTwo{background-color:#650360}
+/*magenta*/
+.bgThree{background-color:#af006e}
+/*grey*/
+.bgFour{background-color:#eff1f2}
+
+/*****************************/
+
+/*  GRID - 940 - 6 cols */
+/******************************/
+.row{margin:2em 0;overflow:hidden}
+.rowBottom{margin-bottom:2em}
+.wrapperExt{margin-top:1em}
+.cen{width:940px; margin: 0 auto}
+.borderB{border-bottom:solid 1px #ccc;padding-bottom:1em;margin-bottom:1em;}
+/*	General rules for all columns. 
+**************************************/
+.cl{float:left; margin-right:20px}
+/* declare widths - no padding
+*****************************/
+.cl1{width:140px}
+.cl2{width:300px}
+.cl3{width:460px}
+.cl4{width:620px}
+.cl5{width:780px}
+/*padding 5px*/
+.p5{padding:5px}
+/* padding 10px 
+*****************************************/
+.p10{padding:10px}
+/**/
+.cl1p10{width:120px}
+.cl2p10{width:280px}
+.cl3p10{width:440px}
+.cl4p10{width:600px}
+.cl5p10{width:760px}
+/* padding - 20px
+*****************************************/
+.p20{padding:20px}
+/**/
+.cl1p20{width:100px}
+.cl2p20{width:260px}
+.cl3p20{width:420px}
+.cl4p20{width:580px}
+.cl5p20{width:740px}
+/* Use on last item in row - removes right margin
+*****************************/
+.lastCol{margin-right:0}
+/* End grids
+******************************/
+/*margins*/
+.m0{margin:0}
+.tm0{margin-top:0}
+.rm0{margin-right:0}
+.bm0{margin-bottom:0}
+.lm0{margin-left:0}
+/*paddings*/
+.p0{padding:0}
+.pt0{padding-top:0}
+.pr0{padding-right:0}
+.pb0{padding-bottom:0}
+.pl0{padding-left:0}
+
+.box{margin-bottom:1em}
+/* defaults with content to right define widths usong grid classes*/
+.boxC{float:right;margin:0 0 0 20px;}
+.boxC >:last-child, .boxC1  >:last-child, .boxC2  >:last-child, .boxI >:last-child {margin-bottom:0;}
+.boxI{float:right;margin:0}
+/* boxleft - extends box- with content panel to left*/
+.boxLeft{}
+.boxLeft .boxC{float:left;margin:0 20px 0 0}
+.boxLeft .boxI{float:left;margin:0 }
+/*box3Col - extends box */
+.box3Col{}
+/*box4Col - extends box */
+.box4Col{}
+

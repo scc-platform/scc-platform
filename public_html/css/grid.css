@@ -1,0 +1,58 @@
+
+/*  GRID - 940 - 6 cols */
+/******************************/
+.row,.rowHeader{margin:2em 0;}
+.header{padding:3em 0 3em 0}
+.rowBottom{margin-bottom:2em}
+.rowSlim{margin:1em 0}
+.rowCancelTop{margin-top:0}
+.wrapperExt{margin-top:0}
+.footer{padding-top:0;background-color:#770800;height:100px}
+.footer a{color:#fff}
+.cen{width:940px; margin: 0 auto}
+.borderB, .borderBD{border-color:#424242;border-width: 0 0 1px 0; border-style:solid;padding-bottom:1em;margin-bottom:1em;}
+.borderBD,.borderT{border-style:solid;margin-bottom: 0;margin-bottom:0.5em;padding-bottom: 0.5em }
+.borderT,.borderTD{border-width: 1px 0 0 0;padding:3.5em 0}
+.borderTD{border-style:dotted}
+h2.borderTD{padding:0.7em 0;margin:0.7em 0}
+/*	General rules for all columns. 
+**************************************/
+.cl{float:left;margin-right: 20px}
+/* declare widths - no padding
+*****************************/
+.cl1{width:140px}
+.cl2{width:300px}
+.cl3{width:460px}
+.cl4{width:620px}
+.cl5{width:780px}
+/*padding 5px*/
+.p5{padding:5px}
+.p10{padding:10px}
+.p20{padding:20px}
+/**/
+.cl1p10{width:150px}
+.cl2p10{width:300px}
+.cl3p10{width:460px}
+.cl4p10{width:620px}
+.cl5p10{width:780px}
+/**/
+.cl1p20{width:120px}
+.cl2p20{width:280px}
+.cl3p20{width:440px}
+.cl4p20{width:600px}
+.cl5p20{width:760px}
+.lastCol{margin-right:0}
+/*margins*/
+.m0{margin:0}
+.tm0{margin-top:0}
+.rm0{margin-right:0}
+.bm0{margin-bottom:0}
+.lm0{margin-left:0}
+.mb10{margin-bottom:1em}
+.mb20{margin-bottom:1em !important}
+/*paddings*/
+.p0{padding:0}
+.pt0{padding-top:0}
+.pr0{padding-right:0}
+.pb0{padding-bottom:0}
+.pl0{padding-left:0}
