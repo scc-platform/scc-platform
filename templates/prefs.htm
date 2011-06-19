@@ -41,9 +41,21 @@
 					<label for="useTxt">Send me messages by Text</label>
 				</div>
 
-				<div>
+				<div style="border:none;height:30px;margin-bottom:20px;">
 					<label for="TxtNumber">Text Number</label>
 					<input type="text" name="txtNumber" id="TxtNumber" value="{$phone|escape}">
+				</div>
+
+				<div style="border:none;height:30px;margin-bottom:20px;">
+					<label for="StartTime">Start Time</label>
+					<select id="StartTime"><option selected>n/a</option>{for $foo=0 to 23}<option>{$foo}</option>{/for}</select> :
+					<select><option selected>n/a</option>{for $foo=0 to 59}<option>{$foo}</option>{/for}</select>
+				</div>
+
+				<div style="border:none;height:30px;margin-bottom:20px;">
+					<label for="EndTime">End Time</label>
+					<select id="EndTime"><option selected>n/a</option>{for $foo=0 to 23}<option>{$foo}</option>{/for}</select> :
+					<select><option selected>n/a</option>{for $foo=0 to 59}<option>{$foo}</option>{/for}</select>
 				</div>
 
 				<div style="margin-top:30px;height:30px;margin-bottom:10px;">
