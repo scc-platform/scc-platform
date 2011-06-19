@@ -5,3 +5,8 @@
 .copy a, .copy a:link, .copy a:visited, .copy a:hover, .copy a:active {font-size:1.0em;color:#000;text-decoration:underline;color:#770800;}
 .copy.left {float:left;width:550px;}
 .copy.right {float:right;width:450px;}
+
+
+.copy.row {width:100%;height:600px;border:none;}
+.copy.row .left {float:left;width:30%;border:solid 1px #000;}
+.copy.row .right {float:right;width:30%;border:solid 1px #000;}
