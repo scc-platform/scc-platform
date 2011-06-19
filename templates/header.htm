@@ -44,16 +44,16 @@
 					<div id="menu">
 						<ul>
 							{if $currentUser}
-							<li {if $smarty.server.PHP_SELF == '/send.php'}class="selected"{/if}><a href="send">Send A Message</a></li>
-							<li {if $smarty.server.PHP_SELF == '/helpers.php'}class="selected"{/if}><a href="helpers">Helpers</a></li>
-							<li {if $smarty.server.PHP_SELF == '/helper_groups.php'}class="selected"{/if}><a href="helper_groups">Groups</a></li>
-							<li {if $smarty.server.PHP_SELF == '/prefs.php'}class="selected"{/if}><a href="prefs">Preferences</a></li>											
+							<li {if $smarty.server.PHP_SELF == '/send.php'}class="selected"{/if}><a href="send.php">Send A Message</a></li>
+							<li {if $smarty.server.PHP_SELF == '/helpers.php'}class="selected"{/if}><a href="helpers.php">Helpers</a></li>
+							<li {if $smarty.server.PHP_SELF == '/helper_groups.php'}class="selected"{/if}><a href="helper_groups.php">Groups</a></li>
+							<li {if $smarty.server.PHP_SELF == '/prefs.php'}class="selected"{/if}><a href="prefs.php">Preferences</a></li>											
 							{else}
-							<li {if $smarty.server.PHP_SELF == '/tour.php'}class="selected"{/if}><a href="/tour">Take A Tour</a></li>
-							<li {if $smarty.server.PHP_SELF == '/sharers.php'}class="selected"{/if}><a href="/sharers">Sharers</a></li>
-							<li {if $smarty.server.PHP_SELF == '/carers.php'}class="selected"{/if}><a href="/carers">Carers</a></li>
-							<li {if $smarty.server.PHP_SELF == '/about.php'}class="selected"{/if}><a href="/about">About Us</a></li>
-							<li {if $smarty.server.PHP_SELF == '/contact.php'}class="selected"{/if}><a href="/contact">Contact Us</a></li>
+							<li {if $smarty.server.PHP_SELF == '/tour.php'}class="selected"{/if}><a href="/tour.php">Take A Tour</a></li>
+							<li {if $smarty.server.PHP_SELF == '/sharers.php'}class="selected"{/if}><a href="/sharers.php">Sharers</a></li>
+							<li {if $smarty.server.PHP_SELF == '/carers.php'}class="selected"{/if}><a href="/carers.php">Carers</a></li>
+							<li {if $smarty.server.PHP_SELF == '/about.php'}class="selected"{/if}><a href="/about.php">About Us</a></li>
+							<li {if $smarty.server.PHP_SELF == '/contact.php'}class="selected"{/if}><a href="/contact.php">Contact Us</a></li>
 							{/if}
 						</ul>
 					</div>
