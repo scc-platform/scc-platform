@@ -14,6 +14,11 @@ if (isset($_POST['helper_group_id']) && ctype_digit($_POST['helper_group_id'])) 
 
 if (isset($_POST['msg']) && $_POST['msg']) {
 	$c->setMsg($_POST['msg']);
+	if (is_array($_POST['helperTypes'])) {
+		foreach($_POST['helperTypes'] as $ht) {
+			$c->addHelpType($ht);
+		}
+	}
 	$id = $c->send();
 	header("Location: /message.php?id=".$id);
 }
