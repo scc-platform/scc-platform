@@ -17,6 +17,11 @@ class PreferencesController {
 		$this->prefs = $s->fetch(PDO::FETCH_ASSOC);
 		$this->prefsID = $this->prefs['id'];
 
+		$s = $db->prepare("SELECT * FROM users WHERE id=:id");
+		$s->execute(array('id'=>$userID));
+
+		$this->prefs = array_merge($this->prefs, $s->fetch(PDO::FETCH_ASSOC));
+
 
 	}
 
@@ -24,11 +29,13 @@ class PreferencesController {
 	public function useEmail() {  return isset($this->prefs['use_email']) ? $this->prefs['use_email'] : true; }
 	public function useTxt() {  return isset($this->prefs['use_txt']) ? $this->prefs['use_txt'] : true; }
 	public function useTwitter() {  return isset($this->prefs['use_twitter']) ? $this->prefs['use_twitter'] : true; }
+	public function getPhone() {  return isset($this->prefs['phone']) ? $this->prefs['phone'] : true; }
 
 	public function setIsActive($v) { $this->prefs['is_active'] = (Boolean)$v; }
 	public function setUseEmail($v) { $this->prefs['use_email'] = (Boolean)$v; }
 	public function setUseTxt($v) { $this->prefs['use_txt'] = (Boolean)$v; }
 	public function setUseTwitter($v) { $this->prefs['use_twitter'] = (Boolean)$v; }
+	public function setPhone($p) { $this->prefs['phone'] = $p; }
 
 	public function save() {
 		$db = getDB();
@@ -47,6 +54,9 @@ class PreferencesController {
 		$s->bindValue('use_twitter', $this->useTwitter());
 		$s->execute();
 		if (!$this->prefsID) $this->prefsID = $db->lastInsertId();
+
+		$s = $db->prepare("UPDATE users SET phone=:phone WHERE id=:id");
+		$s->execute(array('id'=>$this->userID, 'phone'=>$this->prefs['phone']));
 
 	}
 
