@@ -67,9 +67,14 @@ class ProcessMessage {
 		foreach($this->actualToUsers as $user) {
 			$s->bindValue('user_id', $user['id']);
 
+			$c = new PreferencesController($user['id']);
 
-			$this->email($user);
-			$s->bindValue('sent_email', true);
+			if ($c->useEmail()) {
+				$this->email($user);
+				$s->bindValue('sent_email', true);
+			} else {
+				$s->bindValue('sent_email', false);
+			}
 
 			$s->bindValue('sent_txt', false);
 
