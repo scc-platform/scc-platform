@@ -1,42 +1,89 @@
 
 {include file="header.htm"}
 
+<div id="prefs" style="border:none;width:500px;margin:0px auto;height:300px;margin-bottom:50px;">
 
-<h2>Prefs</h2>
-
-{if $isActive}
-	Active!
-	<form action="" method="post">
-		<input type="hidden" name="makeInactivate" value="yes">
-		<input type="submit" value="Make Inactive">
-	</form>
-
-	<form method="post">
-		<input type="hidden" name="prefs" value="change">
-
-		<div>
-			<input type="checkbox" name="useTwitter" id="useTwitter" {if $useTwitter}checked{/if}>
-			<label for="useTwitter">Send me messages by Twitter</label>
-		</div>
-		<div>
-			<input type="checkbox" name="useEmail" id="useEmail" {if $useEmail}checked{/if}>
-			<label for="useEmail">Send me messages by Email</label>
-		</div>
-		<div>
-			<input type="checkbox" name="useTxt" id="useTxt" {if $useTxt}checked{/if}>
-			<label for="useTxt">Send me messages by Text</label>
-		</div>
+	{if $isActive}
 		
-		<input type="submit" value="change">
+		<div style="margin:0px auto;margin-bottom:20px;width:450px;height:50px;border:none;">
+	
+			<div style="float:left;width:200px;">
+				Active! Your ID is {$currentUser['id']}
+			</div>
+			
+			<div style="float:right;width:200px;text-align:right;">
+				<form action="" method="post">
+					<input type="hidden" name="makeInactivate" value="yes">
+					<input type="submit" value="Make Inactive" class="submit">
+				</form>
+			</div>
+		</div>
 
-	</form>
+		<div style="margin:0px auto;width:450px;margin-top:20px;border:solid 1px #000;-moz-border-radius: 8px;border-radius: 8px;padding:0px 10px;">
+			
+			<br/>
+			
+			<form method="post" style="width:450px;">
+				<input type="hidden" name="prefs" value="change">
 
-{else}
-	Inactive!
-	<form action="" method="post">
-		<input type="hidden" name="makeActive" value="yes">
-		<input type="submit" value="Make Active">
-	</form>
-{/if}
+				<div style="border:none;height:30px;margin-bottom:20px;margin-top:10px;">
+					<input type="checkbox" name="useTwitter" id="useTwitter" {if $useTwitter}checked{/if}>
+					<label for="useTwitter">Send me messages by Twitter</label>
+				</div>
+				
+				<div style="border:none;height:30px;margin-bottom:20px;">
+					<input type="checkbox" name="useEmail" id="useEmail" {if $useEmail}checked{/if}>
+					<label for="useEmail">Send me messages by Email</label>
+				</div>
+				
+				<div style="border:none;height:30px;margin-bottom:20px;">
+					<input type="checkbox" name="useTxt" id="useTxt" {if $useTxt}checked{/if}>
+					<label for="useTxt">Send me messages by Text</label>
+				</div>
+
+				<div style="border:none;height:30px;margin-bottom:20px;">
+					<label for="TxtNumber">Text Number</label>
+					<input type="text" name="txtNumber" id="TxtNumber" value="{$phone|escape}">
+				</div>
+
+				<div style="border:none;height:30px;margin-bottom:20px;">
+					<label for="StartTime">Start Time</label>
+					<select id="StartTime"><option selected>n/a</option>{for $foo=0 to 23}<option>{$foo}</option>{/for}</select> :
+					<select><option selected>n/a</option>{for $foo=0 to 59}<option>{$foo}</option>{/for}</select>
+				</div>
+
+				<div style="border:none;height:30px;margin-bottom:20px;">
+					<label for="EndTime">End Time</label>
+					<select id="EndTime"><option selected>n/a</option>{for $foo=0 to 23}<option>{$foo}</option>{/for}</select> :
+					<select><option selected>n/a</option>{for $foo=0 to 59}<option>{$foo}</option>{/for}</select>
+				</div>
+
+				<div style="margin-top:30px;height:30px;margin-bottom:10px;">
+					<input type="submit" value="change" class="submit" >
+				</div>
+
+			</form>
+		
+		</div>
+
+	{else}
+	
+		<div style="margin:0px auto;margin-bottom:20px;width:450px;height:50px;border:none;">
+
+			<div style="float:left;width:200px;">
+				Inactive!
+			</div>
+		
+			<div style="float:right;width:200px;text-align:right;">
+				<form action="" method="post">
+					<input type="hidden" name="makeActive" value="yes">
+					<input type="submit" value="Make Active" class="submit">
+				</form>
+			</div>
+		</div>	
+
+	{/if}
+
+</div>
 
 {include file="footer.htm"}

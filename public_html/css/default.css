@@ -56,10 +56,11 @@ a, a:link, a:visited, a:hover, a:active {font-size:1.0em;color:#000;text-decorat
 #container {width:100%;margin:0px auto;min-height:100%;position:relative;}
 #containerInner {80% margin:0px auto;}
 #header {width:100%;height:100px;margin:10px 0px;}
+#menuBanner {margin-top:60px;}
 #headerInner, #menuBannerInner, #middleInner {width:80%;margin:0px auto;}
 #header #top {width:100%;height:50px;}
 #login {float:right;}
-#logo {float:left;margin-top:50px;width:300px;height:30px;font:bold 2.5em "Times New Roman", Times, Serif;}
+#logo {float:left;margin-top:0px;width:300px;height:153px;font:bold 2.5em "Times New Roman", Times, Serif;background:url('/images/SCC-logo-with-tagline-300.jpg') #fff top left no-repeat;}
 .line {border:solid 1px #eee;}
 #menu {width:100%;margin:20px auto;}
 #menu ul {margin:15px auto;}
@@ -69,8 +70,8 @@ a, a:link, a:visited, a:hover, a:active {font-size:1.0em;color:#000;text-decorat
 #menu li.selected a, #menu div.selected a:visited {padding:0.5em 1.0em;border:solid 1px #ccc;background-color:#770800;color:#fff;-moz-border-radius: 8px;border-radius: 8px;}
 #menu li a:hover, #menu div a:active {background-color:#770800;color:#fff;}
 
-#middle {margin-top:80px;width:100%;padding-bottom:100px;}
-#footer {background-color:#770800;color:#fff;position:absolute;bottom:0;width:100%;height:100px;}
+#middle {margin-top:80px;width:100%;padding-bottom:100px;min-height:200px;}
+#footer {background-color:#770800;color:#fff;bottom:0;width:100%;height:100px;}
 #footer div {width:80%;margin:0px auto;margin-top:60px;}
 #footer a, #footer a:link, #footer a:visited, #footer a:hover, #footer a:active{font-size:0.8em;color:#fff;}
 
@@ -148,5 +149,7 @@ a, a:link, a:visited, a:hover, a:active {font-size:1.0em;color:#000;text-decorat
 #groupList .row .content {float:left;}
 #groupList .row .actions {float:right;}
  
-
+#prefs .submit {border:solid 1px #000;
+padding:4px 8px;
+-moz-border-radius: 5px;border-radius: 5px;float:right;}
 
