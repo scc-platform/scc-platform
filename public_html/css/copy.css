@@ -1,0 +1,7 @@
+.copy {}
+.copy p {margin-bottom:20px;}
+.copy h1 {font-size:1.5em;margin-bottom:20px;}
+.copy strong {font-weight:bold;}
+.copy a, .copy a:link, .copy a:visited, .copy a:hover, .copy a:active {font-size:1.0em;color:#000;text-decoration:underline;color:#770800;}
+.copy.left {float:left;width:550px;}
+.copy.right {float:right;width:450px;}
