@@ -6,7 +6,7 @@
 
 <ul>
 {foreach from=$helpers item=helper}
-<li>
+<li style="border: 1px solid black; padding: 1px; margin: 10px;">
 {$helper.username} ({$helper.id}) {$helper.status}
 {if $helper.status == 'pending'}
 <form action='/helpers.php' method='post' name='approval'>
