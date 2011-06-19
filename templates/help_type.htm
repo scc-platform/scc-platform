@@ -1,0 +1,32 @@
+
+{include file="header.htm"}
+
+
+<h2>Help Types</h2>
+
+<ul>
+	{foreach $helpTypes as $helpType}
+		<li>{$helpType['title']|escape}</li>
+	{/foreach}
+</ul>
+
+
+<div id="">
+
+	<form action="" method="post" class="form">
+
+		<div class="input">
+			<label for="HelpType">Help Type</label>
+			<input type="text" value="" name="helpType" id="HelpType" class="textfield">
+		</div>
+
+		<div class="buttons">
+			<input type="submit" value="Add" class="submit">
+		</div>
+
+	</form>
+
+</div>
+
+
+{include file="footer.htm"}
