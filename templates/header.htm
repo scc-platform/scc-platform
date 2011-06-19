@@ -10,47 +10,56 @@
 		<meta name="keywords" content="" />
 		
 		<!-- default CSS file -->
-		<link rel="stylesheet" href="css/default.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="css/master.css" type="text/css" media="screen" />
 		
 		<!-- jQuery library hosted at google -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+	<!--	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script> -->
 		
 	</head>
 	<body>
 
 		<div id="container">
-
+			
 			<div id="header">
-				<div id="top">
-					<div id="logo">ShareCareClub.org</div>
-				
-					<div id="login">
-					{if $currentUser}
-						Welcome {$currentUser['username']} ({$currentUser['id']})
-						<span id="logoutLink"><a href="logout.php">Logout</a></span>
-					{else}
-						<span id="loginLink" {if $smarty.server.PHP_SELF == '/login.php'}class="selected" {/if}><a href="login.php">Login</a></span> | <span id="signupLink" {if $smarty.server.PHP_SELF == '/signup.php'}class="selected" {/if}><a href="signup.php" >Join</a></span>
-					{/if}
+				<div id="headerInner">
+					<div id="top">
+						<div id="logo">Share Care Club</div>
+			
+						<div id="login">
+							<div id="home"><a href="/" title="Homepage"><img src="images/house.png"/></a></div>
+						{if $currentUser}
+							Welcome <a href="#" title="Your Account">{$currentUser['username']}</a> ({$currentUser['id']})
+							<a href="logout.php" id="logoutLink" title="Logout">Logout</a>
+						{else}
+							<a id="loginLink" href="login.php" {if $smarty.server.PHP_SELF == '/login.php'}class="selected" {/if}>Login</a> | <a href="signup.php" id="signupLink" {if $smarty.server.PHP_SELF == '/signup.php'}class="selected" {/if}>Join</a>
+						{/if}
+						</div>
 					</div>
-				</div>
-				
-				<div id="menu">
-					<div><a href="/">Home</a></div>
-					<div><a href="">Take A Tour</a></div>
-					<div><a href="">Sharers</a></div>
-					<div><a href="">Carers</a></div>
-					<div><a href="">About Us</a></div>
-					<div><a href="">Contact Us</a></div>
 				</div>
 			</div>
 			
-			{if $currentUser}
-			<div id="menuService">
-				<div class="link {if $smarty.server.PHP_SELF == '/send.php'}selected{/if}"><a href="send.php">Send A Message</a></div>
-				<div class="link {if $smarty.server.PHP_SELF == '/prefs.php'}selected{/if}"><a href="prefs.php">Preferences</a></div>
-			</div>			
-			{/if}
-			
+			<div id="menuBanner">
+				<div id="menuBannerInner">
+					<hr/ class="line">
+					<div id="menu">
+						<ul>
+							{if $currentUser}
+							<li {if $smarty.server.PHP_SELF == '/send.php'}class="selected"{/if}><a href="send">Send A Message</a></li>
+							<li {if $smarty.server.PHP_SELF == '/helpers.php'}class="selected"{/if}><a href="helpers">Helpers</a></li>
+							<li {if $smarty.server.PHP_SELF == '/helper_groups.php'}class="selected"{/if}><a href="helper_groups">Groups</a></li>
+							<li {if $smarty.server.PHP_SELF == '/prefs.php'}class="selected"{/if}><a href="prefs">Preferences</a></li>											
+							{else}
+							<li {if $smarty.server.PHP_SELF == '/tour.php'}class="selected"{/if}><a href="/tour">Take A Tour</a></li>
+							<li {if $smarty.server.PHP_SELF == '/sharers.php'}class="selected"{/if}><a href="/sharers">Sharers</a></li>
+							<li {if $smarty.server.PHP_SELF == '/carers.php'}class="selected"{/if}><a href="/carers">Carers</a></li>
+							<li {if $smarty.server.PHP_SELF == '/about.php'}class="selected"{/if}><a href="/about">About Us</a></li>
+							<li {if $smarty.server.PHP_SELF == '/contact.php'}class="selected"{/if}><a href="/contact">Contact Us</a></li>
+							{/if}
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		
 				<div id="middle">
-
-
+					<div id="middleInner">

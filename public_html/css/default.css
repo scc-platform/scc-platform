@@ -2,7 +2,6 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -28,8 +27,9 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
+html,body {
 	line-height: 1;
+	height:100%;
 }
 ol, ul {
 	list-style: none;
@@ -49,45 +49,46 @@ table {
 
 /* Default Styles - A starting point */
 body {font-family:helvetica, verdana, sans-serif;font-size:1.0em;color:#000;}
+h1 {font-size:1.2em;}
 
-a {font-size:1.0em;color:#000;text-decoration:underline;}
-a:link {font-size:1.0em;color:#000; text-decoration:underline;}
-a:visited {font-size:1.0em;color:#000; text-decoration:underline;}
-a:hover {font-size:1.0em;color:#000; text-decoration:underline;}
-a:active {font-size:1.0em;color:#000; text-decoration:underline;}
+a, a:link, a:visited, a:hover, a:active {font-size:1.0em;color:#000;text-decoration:underline;}
 
-a.selected {background-color:#ccc;}
-a.selected:link {background-color:#ccc;}
-a.selected:visited {background-color:#ccc;}
-a.selected:hover {background-color:#ccc;}
-a.selected:active {background-color:#ccc;}
-
-.link {background-color:#fff;}
-.link.selected{background-color:#ccc;}
-
-#container {width:80%;margin:0px auto;}
-#header {width:100%;height:70px;border-bottom:solid 1px #000;margin:10px 0px;}
-#header #top {width:100%;height:30px;}
+#container {width:100%;margin:0px auto;min-height:100%;position:relative;}
+#containerInner {80% margin:0px auto;}
+#header {width:100%;height:100px;margin:10px 0px;}
+#headerInner, #menuBannerInner, #middleInner {width:80%;margin:0px auto;}
+#header #top {width:100%;height:50px;}
 #login {float:right;}
-#logo {float:left;}
-#menu {width:100%;margin-top:0px;}
-#menu div {float:left;border:solid 1px #ccc;margin-left:20px;padding:4px 8px;position:inline;}
-#menuService {width:100%;margin-top:0px;height:30px;margin-bottom:30px;}
-#menuService div {float:left;border:solid 1px #ccc;margin-left:20px;padding:4px 8px;position:inline;}
-#middle {width:100%;min-height:500px;}
-#footer {width:100%;height:30px;background-color:#eee;}
+#logo {float:left;margin-top:50px;width:300px;height:30px;font:bold 2.5em "Times New Roman", Times, Serif;}
+.line {border:solid 1px #eee;}
+#menu {width:100%;margin:20px auto;}
+#menu ul {margin:15px auto;}
+#menu li {float:left;position:inline;color:#fff;margin-right:10px;}
+#menu li a, #menu div a:visited {border:solid 1px #ccc;padding:0.5em 1.0em;color:#000;-moz-border-radius: 8px;border-radius: 8px;}
+#menu li.selected {float:left;position:inline;}
+#menu li.selected a, #menu div.selected a:visited {padding:0.5em 1.0em;border:solid 1px #ccc;background-color:#770800;color:#fff;-moz-border-radius: 8px;border-radius: 8px;}
+#menu li a:hover, #menu div a:active {background-color:#770800;color:#fff;}
+
+#middle {margin-top:80px;width:100%;padding-bottom:100px;}
+#footer {background-color:#770800;color:#fff;position:absolute;bottom:0;width:100%;height:100px;}
+#footer div {width:80%;margin:0px auto;margin-top:60px;}
+#footer a, #footer a:link, #footer a:visited, #footer a:hover, #footer a:active{font-size:0.8em;color:#fff;}
 
 /* header top - login/signup/logout links */
+#home {float:left;padding-right:10px;}
 #loginLink, #signupLink, #logoutLink {
+	font-size:0.8em;
+	color:#000;
 	padding:2px 4px;
-	border:solid 1px #fff;
-	background-color:#fff;
+	background-color:#fff;	
 }
 
 #loginLink.selected, #signupLink.selected, #logoutLink.selected {
+	font-size:0.8em;
+	color:#fff;
 	padding:2px 4px;
-	border:solid 1px #ccc;
-	background-color:#ccc;}
+	background-color:#770800;
+}
 
 /* Default form Styles */
 .form .textfield {
@@ -98,9 +99,12 @@ a.selected:active {background-color:#ccc;}
 	height:80px;
 }
 
+.form a, .form a:link, .form a:visited, .form a:hover, .form a:active {font-size:0.8em;color:#770800;text-decoration:underline;color:#770800;}
+
 .form .submit {
 	border:solid 1px #000;
 	padding:4px 8px;
+	-moz-border-radius: 5px;border-radius: 5px;
 }
 .form .input, .buttons {
 	width:100%;
@@ -125,10 +129,24 @@ a.selected:active {background-color:#ccc;}
 	margin:0px auto;
 	margin-top:100px;
 	border:solid 1px #000;
-	-moz-border-radius: 5px;
+	-moz-border-radius: 8px;
 	border-radius: 8px;
 }
 
+#newGroupForm {
+	width:450px;
+	margin:0px auto;
+	margin-top:100px;
+}
 
+#newGroup {width:200px;height:30px;}
+#newGroup .textfield {width:165px;float:left;}
+#newGroup .submit {float:right;border:none;padding:0px;background-color:#770800;color:#fff;}
+#groupList {width:400px;}
+#groupList ul {}
+#groupList .row {width:100%;height:30px;margin-bottom:10px;}
+#groupList .row .content {float:left;}
+#groupList .row .actions {float:right;}
+ 
 
 
