@@ -10,6 +10,27 @@
 		<input type="hidden" name="makeInactivate" value="yes">
 		<input type="submit" value="Make Inactive">
 	</form>
+
+	<form method="post">
+		<input type="hidden" name="prefs" value="change">
+
+		<div>
+			<input type="checkbox" name="useTwitter" id="useTwitter" {if $useTwitter}checked{/if}>
+			<label for="useTwitter">Send me messages by Twitter</label>
+		</div>
+		<div>
+			<input type="checkbox" name="useEmail" id="useEmail" {if $useEmail}checked{/if}>
+			<label for="useEmail">Send me messages by Email</label>
+		</div>
+		<div>
+			<input type="checkbox" name="useTxt" id="useTxt" {if $useTxt}checked{/if}>
+			<label for="useTxt">Send me messages by Text</label>
+		</div>
+		
+		<input type="submit" value="change">
+
+	</form>
+
 {else}
 	Inactive!
 	<form action="" method="post">

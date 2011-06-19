@@ -14,9 +14,17 @@ if (isset($_POST['makeActive']) && $_POST['makeActive'] == 'yes') {
 	$c->save();
 }
 
-
+if (isset($_POST['prefs']) && $_POST['prefs'] == 'change') {
+	$c->setUseEmail(isset($_POST['useEmail']) && $_POST['useEmail'] ? true : false );
+	$c->setUseTwitter(isset($_POST['useTwitter']) && $_POST['useTwitter'] ? true : false );
+	$c->setUseTxt(isset($_POST['useTxt']) && $_POST['useTxt'] ? true : false );
+	$c->save();
+}
 
 $s = getSmarty();
 $s->assign('isActive',$c->isActive());
+$s->assign('useEmail',$c->useEmail());
+$s->assign('useTxt',$c->useTxt());
+$s->assign('useTwitter',$c->useTwitter());
 $s->display('prefs.htm');
 
