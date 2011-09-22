@@ -1,6 +1,6 @@
 <?php
 
-class UserController {
+class UserController extends BaseController {
 
 	function associate($helperID, $carerID, $statusID = 0) {
 		// todo check carer/club exists
@@ -70,6 +70,21 @@ class UserController {
         	'userid'=>$_SESSION['userID']);
         $s = $db->prepare($sql);
         $s->execute($data);
+	}
+
+	function getUserId($username) {
+
+		$userID = null;
+		$db = getDB();
+		$sql = "SELECT user_id FROM logins WHERE username = :username";
+		$s = $db->prepare($sql);
+		$s->execute(array('username'=>$username));
+		if($s->rowCount() > 0) {
+            $user = $s->fetch(PDO::FETCH_ASSOC);
+			$userID  = $user['user_id'];
+		}
+		return $userID;
+
 	}
 
 }

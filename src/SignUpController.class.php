@@ -1,6 +1,7 @@
 <?php
 
-class SignUpController {
+class SignUpController extends BaseController {
+
 	function signUp($email, $username, $password) {
 
 		$db = getDB();
@@ -23,5 +24,20 @@ class SignUpController {
 
 		return $id;
 
+	}
+
+	function userExists($username) {
+
+		$db = getDB();
+
+		$s = $db->prepare("
+			SELECT logins.* 
+			FROM users 
+			JOIN logins ON logins.user_id = users.id 
+		   	WHERE logins.username=:username");
+
+		$s->execute(array('username'=>$username));
+
+		return $s->rowCount() > 0;
 	}
 }
