@@ -1,17 +1,19 @@
 
 {include file="header.htm"}
 
-<div id="prefs" style="border:none;width:500px;margin:0px auto;height:300px;margin-bottom:50px;">
+<div id="prefs" style="border:none;width:500px;margin:0px;height:300px;margin-bottom:50px;">
 
 	{if $isActive}
 		
 		<div style="margin:0px auto;margin-bottom:20px;width:450px;height:50px;border:none;">
 	
-			<div style="float:left;width:200px;">
-				Active! Your ID is {$currentUser['id']}
+			<div style="float:left;width:225px;">
+				<p>Active!</p>
+				<p>Your ID is: {$currentUser['id']}</p>
+				<p>Your USERNAME is: {$currentUser['username']}</p>
 			</div>
 			
-			<div style="float:right;width:200px;text-align:right;">
+			<div style="float:left;width:225px;text-align:right;">
 				<form action="" method="post">
 					<input type="hidden" name="makeInactivate" value="yes">
 					<input type="submit" value="Make Inactive" class="submit">
@@ -19,7 +21,7 @@
 			</div>
 		</div>
 
-		<div style="margin:0px auto;width:450px;margin-top:20px;border:solid 1px #000;-moz-border-radius: 8px;border-radius: 8px;padding:0px 10px;">
+		<div style="margin:0px auto;width:450px;margin-top:20px;border:solid 1px #000;-moz-border-radius: 8px;border-radius: 8px;padding:0px 10px;clear:both;">
 			
 			<br/>
 			
