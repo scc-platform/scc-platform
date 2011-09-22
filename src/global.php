@@ -32,6 +32,8 @@ function getSmarty() {
 	$s->template_dir = dirname(__FILE__) . '/../templates/';
 	$s->compile_dir = dirname(__FILE__) . '/../smarty_c/';
 	$s->assign('currentUser',$CURRENT_USER);
+	$c = new BaseController();
+	$s->assign('flash_msgs', $c->getFlashMsgs());
 	return $s;
 }
 

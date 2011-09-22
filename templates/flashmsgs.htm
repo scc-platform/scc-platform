@@ -1,0 +1,7 @@
+{if $flash_msgs|@count gt 0}
+<ul id="flashmsgs">
+{foreach from=$flash_msgs item=msg}
+<li>{$msg|escape:html}</li>
+{/foreach}
+</ul>
+{/if}
