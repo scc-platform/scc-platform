@@ -116,7 +116,7 @@ class ProcessMessage {
 			"to" => $userData['phone'], 
 			"text" => substr($this->fromUser['email'] . ': ' . $this->messsageData['body'],0,160),
 		);
-		//https://api.clickatell.com/http/sendmsg?user=neillru&password=clickatell2314&api_id=3314357&to=447976939269&text=Meet+me+at+home
+		//https://api.clickatell.com/http/sendmsg?user=USER&password=PASS&api_id=APPID&to=PHONE&text=Meet+me+at+home
 		$url = "https://api.clickatell.com/http/sendmsg?".http_build_query($data);
 
 		// create a new cURL resource
